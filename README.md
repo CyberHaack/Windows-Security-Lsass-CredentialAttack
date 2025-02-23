@@ -35,7 +35,7 @@ For this project, the following tools were used to demonstrate how attackers exp
    - [Download Process Explorer](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer)  
 
 
-### Optional Tools 
+### Optional Tools for cracking hashed passwords
 ##  **Note**  If you want to proceed further to crack the hashed password, pls do so ethically!!
 
 - **Hashcat:** For cracking retrieved NTLM hashes. [Download Hashcat](https://hashcat.net/hashcat/)  
@@ -97,6 +97,74 @@ If this is successful, you should see the Privilege "20" Ok
 
 ### After running these Cmdlets, you should have something similar to this screenshot below:
 <img width="572" alt="7" src="https://github.com/user-attachments/assets/b4b5d50d-ea11-4179-acea-0a2a7faa232b" />
+
+## Observation
+This section analyzes the output from **Mimikatz** and explains how attackers can exploit this technique to steal credentials and escalate privileges. 
+![image](https://github.com/user-attachments/assets/ddb18194-f088-4c63-97e8-13136caed514)
+![image](https://github.com/user-attachments/assets/78cff4e0-c658-4a9d-8373-ba25fa5526b3)
+
+
+1. **Extracted Credentials:**
+   - The output from **Mimikatz** shows the credentials of logged-in users, including **NTLM hashes**, **SHA1 hashes**, and other authentication data.
+   - Example from the screenshot:
+     ```
+     * Username : Kachi
+     * Domain : DESKTOP-HPNSILK
+     * NTLM : a9262a62e297016f32e9937dbe346087
+     * SHA1 : b5da5c1793954a9211555d36b7d2f6d0af88d957
+     ```
+
+
+2. **Key Observations:**
+   - **NTLM Hash:** The NTLM hash (`a9262a62e297016f32e9937dbe346087`) is a cryptographic representation of the user’s password. Attackers can use this hash to impersonate the user without knowing the actual password.
+   - **SHA1 Hash:** The SHA1 hash (`b5da5c1793954a9211555d36b7d2f6d0af88d957`) is another cryptographic representation of the password, often used for additional authentication mechanisms.
+   - **No Plaintext Password:** In this case, the plaintext password was not retrieved, but the hashes are still valuable to attackers.
+
+### How Attackers Use This Technique
+1. **Credential Theft:**
+   - Attackers use tools like **Mimikatz** to extract credentials from the **lsass.exe** process. This allows them to steal **NTLM hashes**, **Kerberos tickets**, and even **plaintext passwords** in some cases.
+   - With the extracted hashes, attackers can perform **Pass-the-Hash (PtH)** attacks, where they use the hash to authenticate as the user without needing the actual password.
+
+2. **Privilege Escalation:**
+   - If the extracted credentials belong to an administrator or a user with elevated privileges, attackers can escalate their access to sensitive systems and data.
+   - For example, if the user **Kachi** is an administrator, the attacker can use the stolen hash to gain administrative access to the system.
+
+3. **Lateral Movement:**
+   - Attackers can use the stolen credentials to move laterally across a network, accessing other systems and resources.
+   - This is particularly dangerous in corporate environments, where attackers can compromise multiple systems using a single set of stolen credentials.
+
+### Real-World Implications
+1. **Risks of Unprotected lsass.exe:**
+   - The **lsass.exe** process is a prime target for attackers because it stores sensitive authentication data in memory.
+   - If **lsass.exe** is not properly protected, attackers can easily extract credentials and compromise the system.
+
+2. **Mitigation Strategies and Best Practices:**
+   
+   - **Re-enable Windows Security and turn on Real-Time Protection**
+   - **Enable LSASS Protection:** Open the Run Dialog and type in secpol.msc > Navigate to Local Policies > Security Options > Enable Local Security Authority (LSA Protection)
+   - **Enable Credential Guard:** Open PowerShell as an Adminsitrator and run the Script:
+     Enable-WindowsOptionalFeature -Online -FeatureName "Windows-Defender-CredentialGuard", then Restart your VM or Host Computer
+   - **Disable the NTLM protocol**
+     **Note**: Before disabling this protocol, confirm that your environment does not rely on it for authentication as this could break the functionality for legacy applications or systems.
+     - **Monitor lsass.exe:** Use tools like Sysmon or Process Explorer to monitor lsass.exe for unusual activities
+
+       
+
+### I recommend going through this article for more tips in preventing PtH (Pass-the-Hasg) and other Credential Dumping Attacks:
+<a href="https://github.com/user-attachments/files/18930138/Mitigating.Pass-the-Hash.PtH.Attacks.and.Other.Credential.Theft.Techniques_English.pdf">Mitigating Pass the Hash Attacks and Other Credential Theft Techniques</a>
+
+### Conclusion
+This project has been able to show the technique commonly used in real-world attacks to steal credentials, escalate privileges, and move laterally across networks. By understanding how this attack works, we can take steps to protect **lsass.exe** and prevent credential theft.
+
+#### If you got this far, I sincerely applaud you and your taste for knowledge 👏👏👏👏👏👏👏👏👏👏👏. 
+
+#### Be kind enough to follow me for more exciting project on cybersecurity. 
+
+
+## Disclaimer
+This project is intended for **educational purposes only**. It is designed to demonstrate how attackers can exploit the **Local Security Authority Subsystem Service (lsass.exe)** to retrieve **NTLM hashes** and other credentials. The techniques and tools discussed in this project should **never be used to illegally access computers, networks, or systems without explicit authorization**.
+
+
 
 
 
