@@ -1,5 +1,8 @@
 # Windows Security Lab - Lsass Credential Attack Simulation 
 
+## Disclaimer
+This project is intended for **educational purposes only**. It is designed to demonstrate how attackers can exploit the **Local Security Authority Subsystem Service (lsass.exe)** to retrieve **NTLM hashes** and other credentials. The techniques and tools discussed in this project should **never be used to illegally access computers, networks, or systems without explicit authorization**.
+
 
 ## Objective
 The primary objective of this project is to demonstrate how attackers can exploit the **Local Security Authority Subsystem Service (lsass.exe)** in Windows to retrieve **NTLM hashes**. Using tools like **Mimikatz**, this project simulates the process of extracting hashes from memory, highlighting the risks associated with unprotected lsass.exe processes and the importance of securing sensitive credentials.
@@ -161,8 +164,6 @@ This project has been able to show the technique commonly used in real-world att
 #### Be kind enough to follow me for more exciting project on cybersecurity. 
 
 
-## Disclaimer
-This project is intended for **educational purposes only**. It is designed to demonstrate how attackers can exploit the **Local Security Authority Subsystem Service (lsass.exe)** to retrieve **NTLM hashes** and other credentials. The techniques and tools discussed in this project should **never be used to illegally access computers, networks, or systems without explicit authorization**.
 
 
 
