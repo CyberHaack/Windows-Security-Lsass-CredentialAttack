@@ -101,6 +101,8 @@ If this is successful, you should see the Privilege "20" Ok
 ### After running these Cmdlets, you should have something similar to this screenshot below:
 <img width="572" alt="7" src="https://github.com/user-attachments/assets/b4b5d50d-ea11-4179-acea-0a2a7faa232b" />
 
+
+
 ## Observation
 This section analyzes the output from **Mimikatz** and explains how attackers can exploit this technique to steal credentials and escalate privileges. 
 ![image](https://github.com/user-attachments/assets/ddb18194-f088-4c63-97e8-13136caed514)
@@ -158,6 +160,9 @@ This section analyzes the output from **Mimikatz** and explains how attackers ca
 
 ### Conclusion
 This project has been able to show the technique commonly used in real-world attacks to steal credentials, escalate privileges, and move laterally across networks. By understanding how this attack works, we can take steps to protect **lsass.exe** and prevent credential theft.
+
+
+If you want more challenging project, I encourage you to attempt to crack the hashed password using either of the optional tools I highlighted in the Tools Section above. Let me know if you were successflly able to achieve this in the comment section.
 
 #### If you got this far, I sincerely applaud you and your taste for knowledge 👏👏👏👏👏👏👏👏👏👏👏. 
 
