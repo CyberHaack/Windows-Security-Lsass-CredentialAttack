@@ -162,7 +162,7 @@ This section analyzes the output from **Mimikatz** and explains how attackers ca
 This project has been able to show the technique commonly used in real-world attacks to steal credentials, escalate privileges, and move laterally across networks. By understanding how this attack works, we can take steps to protect **lsass.exe** and prevent credential theft.
 
 
-If you want more challenging project, I encourage you to attempt to crack the hashed password using either of the optional tools I highlighted in the Tools Section above. Let me know if you were successflly able to achieve this in the comment section.
+If you want a challenge your skills, I encourage you to attempt to crack the hashed password using either of the optional tools I highlighted in the Tools Section above. Let me know if you were successflly able to achieve.
 
 #### If you got this far, I sincerely applaud you and your taste for knowledge 👏👏👏👏👏👏👏👏👏👏👏. 
 
