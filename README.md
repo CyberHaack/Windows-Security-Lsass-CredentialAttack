@@ -155,7 +155,7 @@ This section analyzes the output from **Mimikatz** and explains how attackers ca
 
        
 
-### I recommend going through this article for more tips in preventing PtH (Pass-the-Hasg) and other Credential Dumping Attacks:
+### I recommend going through this article for more tips in preventing PtH (Pass-the-Hash) and other Credential Dumping Attacks:
 <a href="https://github.com/user-attachments/files/18930138/Mitigating.Pass-the-Hash.PtH.Attacks.and.Other.Credential.Theft.Techniques_English.pdf">Mitigating Pass the Hash Attacks and Other Credential Theft Techniques</a>
 
 ### Conclusion
